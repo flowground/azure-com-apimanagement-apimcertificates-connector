@@ -1,0 +1,118 @@
+{
+    "title": "ApiManagementClient",
+    "description": "Use these REST APIs for performing operations on Certificate entity in your Azure API Management deployment. Certificates can be used to setup mutual authentication with your Backend in API Management. For more information refer to [How to secure backend using Mutual Auth Certificate](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates).",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/apimanagement-apimcertificates/2016-10-10/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow.",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Certificates_ListByService": {
+            "main": "./lib/actions/Certificates_ListByService.js",
+            "title": "Lists a collection of all certificates in the specified service instance.",
+            "description": "Lists a collection of all certificates in the specified service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificates_ListByService.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificates_Delete": {
+            "main": "./lib/actions/Certificates_Delete.js",
+            "title": "Deletes specific certificate.",
+            "description": "Deletes specific certificate.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificates_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificates_Get": {
+            "main": "./lib/actions/Certificates_Get.js",
+            "title": "Gets the details of the certificate specified by its identifier.",
+            "description": "Gets the details of the certificate specified by its identifier.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificates_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Certificates_CreateOrUpdate": {
+            "main": "./lib/actions/Certificates_CreateOrUpdate.js",
+            "title": "Creates or updates the certificate being used for authentication with the backend.",
+            "description": "Creates or updates the certificate being used for authentication with the backend.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Certificates_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

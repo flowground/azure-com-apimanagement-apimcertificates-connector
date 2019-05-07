@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serviceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "pattern": "^[a-zA-Z](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$"
+        },
+        "certificateId": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "pattern": "^[^*#&+:<>?]+$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters supplied to the CreateOrUpdate certificate operation.",
+            "properties": {
+                "data": {
+                    "description": "Base 64 encoded certificate using the application/x-pkcs12 representation.",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "Password for the Certificate",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "data",
+                "password"
+            ],
+            "type": "object"
+        },
+        "If_Match": {
+            "required": false,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
