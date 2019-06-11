@@ -1,5 +1,5 @@
 {
-    "title": "ApiManagementClient",
+    "title": "ApiManagementClient (apimanagement-apimcertificates)",
     "description": "Use these REST APIs for performing operations on Certificate entity in your Azure API Management deployment. Certificates can be used to setup mutual authentication with your Backend in API Management. For more information refer to [How to secure backend using Mutual Auth Certificate](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates).",
     "docsUrl": "",
     "url": "https://api.apis.guru/v2/specs/azure.com/apimanagement-apimcertificates/2016-10-10/swagger.json",
@@ -26,7 +26,7 @@
                 "label": "Custom Server URL",
                 "viewClass": "TextFieldView"
             },
-            "azure_auth": {
+            "oauth2": {
                 "label": "Azure Active Directory OAuth2 Flow.",
                 "viewClass": "OAuthFieldView"
             }
@@ -34,7 +34,11 @@
         "oauth2": {
             "client_id": "{{OAUTH_CLIENT_ID}}",
             "client_secret": "{{OAUTH_CLIENT_SECRET}}",
-            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize",
+            "token_uri": "https://login.microsoftonline.com/common/oauth2/token",
+            "scopes": [
+                "user_impersonation"
+            ]
         }
     },
     "triggers": {
